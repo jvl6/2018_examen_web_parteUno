@@ -1,0 +1,15 @@
+body{
+    background-color: #c43235;
+    
+    background-image: url("../res/earphone-2639487_1920.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.navbar{
+    background-color: #300032;
+}
+
+.container{
+    background-color: #06000a
+}
