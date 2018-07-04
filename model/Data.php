@@ -2,35 +2,43 @@
 require_once("Conexion.php");
 require_once("Usuario.php");
 
-Class Data{
+class Data{
     private $con;
 
-    public function __construct()
-    {
-        $this->con = new Conexion("bd_feria");
+    public function __construct(){
+        $this->con = new Conexion("exam1");
     }
 
-    public function registerUser($user, $pass)
-    {
-        $query = "INSERT INTO usuario VALUES(NULL, '$user', '$pass')";
+    public function registrar($nombre,$pass){
+        $query = "INSERT INTO usuario VALUES(NULL, '$nombre','$pass');";
+ 
+        $this->ejecutarQuery($query);
+
+    }
+
+
+    public function ejecutarQuery($query){
+
         $this->con->conectar();
         $this->con->ejecutar($query);
         $this->con->desconectar();
+        
     }
 
-    public function lookupUser($user, $pass)
-    {
-        $query = "SELECT * FROM usuario WHERE nombreUsuario = '$user' AND pass = '$pass'";
+    public function getUsuario($nombre, $pass){
         $this->con->conectar();
-        $rs = $this->con->ejecutar($query);
-        $u = null;
+        $rs = $this->con->ejecutar("SELECT * FROM usuario WHERE nombre='$nombre' and pass = '$pass';");
+
+        $usuario = null;
 
         while($reg = $rs->fetch_array()){
-            $u = new Usuario($reg[0], $reg[1], $reg[2]);
+            $usuario = new Usuario($reg[0], $reg[1], $reg[2]);
         }
 
         $this->con->desconectar();
-        return $u;
+
+        return $usuario;
     }
+
+
 }
-?>

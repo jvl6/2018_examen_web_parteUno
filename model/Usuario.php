@@ -1,29 +1,47 @@
 <?php
 class Usuario{
     private $id;
-    private $nombreUsuario;
+    private $nombre;
     private $pass;
 
-    function __construct($id, $nombreUsuario, $pass)
-    {
-        $this->id = $id;
-        $this->nombreUsuario = $nombreUsuario;
-        $this->pass = $pass;
+    public function __construct($nombre, $pass){ 
+        $this->nombre = ""; 
+        $this->pass = "";
     }
 
-    public function getId()
-    {
+    public function getId(){
         return $this->id;
     }
 
-    public function getNombreUsuario()
-    {
-        return $this->nombreUsuario;
+
+    public function setId($id){
+        $this->id = $id;
+
+        return $this;
     }
 
-    public function getPass()
-    {
+
+    public function getContraseña(){
         return $this->pass;
     }
+
+
+    public function setContraseña($pass){
+        $this->pass = $pass;
+
+        return $this;
+    }
+
+   
+    public function getNombre(){
+        return $this->nombre;
+    }
+
+    public function setNombre($nombre){
+        $this->nombre = $nombre;
+
+        return $this;
+    }
 }
+
 ?>
